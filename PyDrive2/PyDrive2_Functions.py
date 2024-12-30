@@ -73,3 +73,14 @@ def download_just_one(file_id: str):
     data = file.GetContentFile(file_name)  # Download the file
     print(f"File '{file_name}' downloaded successfully!")
 
+def update_a_file(path_to_file: str, file_id: str):
+    try:
+        file = drive.CreateFile({'id': file_id})
+        file.SetContentFile(path_to_file)
+        file.Upload()
+
+        return print(True)
+
+    except Exception as e:
+        return print(False, e)
+    
